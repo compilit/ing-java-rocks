@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>nl.ing</groupId>
+  <artifactId>ing-java-rocks</artifactId>
+  <version>${revision}</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>core</module>
+    <module>message-api</module>
+    <module>persistence</module>
+    <module>application</module>
+  </modules>
+
+  <properties>
+    <revision>1.0.0</revision>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring-boot.version>2.7.5</spring-boot.version>
+    <jackson-dataform-xml.version>2.14.0</jackson-dataform-xml.version>
+  </properties>
+
+  <dependencies>
+    <!-- Spring dependencies-->
+    <dependency>
+      <groupId>org.springframework.integration</groupId>
+      <artifactId>spring-integration-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
+    <!-- third party dependencies-->
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-xml</artifactId>
+    </dependency>
+  </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- internal dependencies -->
+      <dependency>
+        <groupId>nl.ing</groupId>
+        <artifactId>core</artifactId>
+        <version>${revision}</version>
+      </dependency>
+      <dependency>
+        <groupId>nl.ing</groupId>
+        <artifactId>core</artifactId>
+        <type>test-jar</type>
+        <version>${revision}</version>
+      </dependency>
+      <dependency>
+        <groupId>nl.ing</groupId>
+        <artifactId>message-api</artifactId>
+        <version>${revision}</version>
+      </dependency>
+      <dependency>
+        <groupId>nl.ing</groupId>
+        <artifactId>persistence</artifactId>
+        <version>${revision}</version>
+      </dependency>
+      <dependency>
+        <groupId>nl.ing</groupId>
+        <artifactId>application</artifactId>
+        <version>${revision}</version>
+      </dependency>
+      <!-- Spring dependencies -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- third party dependencies -->
+      <dependency>
+        <groupId>com.fasterxml.jackson.dataformat</groupId>
+        <artifactId>jackson-dataformat-xml</artifactId>
+        <version>${jackson-dataform-xml.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+</project>
