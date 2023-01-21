@@ -1,13 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <note>
-
-  <body>JAVA 11 ROCKS!</body>
-
+  <body>Java rocks!</body>
   <from>Jaap@tests.com</from>
-
   <heading>Reminder</heading>
-
   <to>dummy@tests.com</to>
-
 </note>
+

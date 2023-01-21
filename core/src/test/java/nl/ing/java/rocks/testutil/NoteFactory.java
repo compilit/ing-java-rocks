@@ -1,43 +1,35 @@
 package nl.ing.java.rocks.testutil;
 
-import static java.nio.charset.StandardCharsets.UTF_8;
-
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.UncheckedIOException;
-import nl.ing.java.rocks.Note;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.DefaultResourceLoader;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.util.FileCopyUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import nl.ing.java.rocks.core.NoteDto;
+import nl.ing.java.rocks.core.Resources;
+import nl.ing.java.rocks.entities.Note;
 
 public final class NoteFactory {
 
   public static final String VALID_EMAIL = "info@compilit.com";
-  public static final String TEST_TEXT = "test";
+  public static final String TEST_HEADING = "test";
+  public static final String TEST_BODY = "java rocks!";
 
   public static Note createValidNote() {
-    return new Note(VALID_EMAIL, VALID_EMAIL, TEST_TEXT, TEST_TEXT);
+    return new Note(VALID_EMAIL, VALID_EMAIL, TEST_HEADING, TEST_BODY);
   }
 
-  public static String createValidNoteDto() {
-    ResourceLoader resourceLoader = new DefaultResourceLoader();
-    Resource resource = resourceLoader.getResource("input.xml");
-    return asString(resource);
+  public static String createValidNoteString() {
+    return Resources.getResourceAsString("input.xml");
   }
 
-  public static String createInvalidNoteDto() {
-    return TEST_TEXT;
-  }
-
-  private static String asString(Resource resource) {
-    try (Reader reader = new InputStreamReader(resource.getInputStream(), UTF_8)) {
-      return FileCopyUtils.copyToString(reader);
-    } catch (IOException e) {
-      throw new UncheckedIOException(e);
+  public static NoteDto createValidNoteDto() {
+    try {
+      return new XmlMapper().readValue(Resources.getResourceAsString("input.xml"), NoteDto.class);
+    } catch (JsonProcessingException e) {
+      throw new RuntimeException(e);
     }
+  }
+
+  public static String createInvalidNoteDtoString() {
+    return TEST_HEADING;
   }
 
 }

@@ -1,31 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>message-api</artifactId>
+  <dependencies>
+    <dependency>
+      <artifactId>core</artifactId>
+      <groupId>nl.ing</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>core</artifactId>
+      <groupId>nl.ing</groupId>
+      <scope>test</scope>
+      <type>test-jar</type>
+    </dependency>
+
+<!--    <dependency>-->
+<!--      <groupId>org.springframework</groupId>-->
+<!--      <artifactId>spring-jms</artifactId>-->
+<!--      <version>6.0.4</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>jakarta.jms</groupId>-->
+<!--      <artifactId>jakarta.jms-api</artifactId>-->
+<!--      <version>3.1.0</version>-->
+<!--    </dependency>-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-amqp</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.rabbitmq.jms</groupId>
+      <artifactId>rabbitmq-jms</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+  </dependencies>
+
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>nl.ing</groupId>
     <artifactId>ing-java-rocks</artifactId>
+    <groupId>nl.ing</groupId>
     <version>${revision}</version>
   </parent>
 
-  <artifactId>message-api</artifactId>
   <version>${revision}</version>
-
-  <dependencies>
-    <dependency>
-      <groupId>nl.ing</groupId>
-      <artifactId>core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>nl.ing</groupId>
-      <artifactId>core</artifactId>
-      <type>test-jar</type>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.kafka</groupId>
-      <artifactId>spring-kafka</artifactId>
-    </dependency>
-  </dependencies>
 </project>

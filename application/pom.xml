@@ -1,29 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <packaging>jar</packaging>
-  <parent>
-    <groupId>nl.ing</groupId>
-    <artifactId>ing-java-rocks</artifactId>
-    <version>${revision}</version>
-  </parent>
 
   <artifactId>application</artifactId>
   <version>${revision}</version>
 
-  <dependencies>
-    <dependency>
-      <groupId>nl.ing</groupId>
-      <artifactId>message-api</artifactId>
-    </dependency>
-  </dependencies>
-
   <build>
     <plugins>
       <plugin>
-        <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <executions>
           <execution>
@@ -32,7 +17,34 @@
             </goals>
           </execution>
         </executions>
+        <groupId>org.springframework.boot</groupId>
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+    <dependency>
+      <artifactId>message-api</artifactId>
+      <groupId>nl.ing</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>persistence</artifactId>
+      <groupId>nl.ing</groupId>
+    </dependency>
+    <dependency>
+      <groupId>nl.ing</groupId>
+      <artifactId>core</artifactId>
+      <type>test-jar</type>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <modelVersion>4.0.0</modelVersion>
+  <packaging>jar</packaging>
+
+  <parent>
+    <artifactId>ing-java-rocks</artifactId>
+    <groupId>nl.ing</groupId>
+    <version>${revision}</version>
+  </parent>
+
 </project>
