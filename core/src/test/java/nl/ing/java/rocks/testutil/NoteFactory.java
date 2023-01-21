@@ -23,8 +23,13 @@ public final class NoteFactory {
   public static NoteDto createValidNoteDto() {
     return read("valid.xml");
   }
+
   public static NoteDto createInvalidNoteDto() {
     return read("invalid.xml");
+  }
+
+  public static String createInvalidNoteDtoString() {
+    return TEST_HEADING;
   }
 
   private static NoteDto read(String source) {
@@ -33,10 +38,6 @@ public final class NoteFactory {
     } catch (JsonProcessingException e) {
       throw new RuntimeException(e);
     }
-  }
-
-  public static String createInvalidNoteDtoString() {
-    return TEST_HEADING;
   }
 
 }

@@ -19,6 +19,7 @@ import org.xml.sax.SAXParseException;
 
 @ExtendWith(MockitoExtension.class)
 public class ValidatorTest {
+
   @Mock
   private MessageConsumerProperties messageConsumerProperties;
   @InjectMocks

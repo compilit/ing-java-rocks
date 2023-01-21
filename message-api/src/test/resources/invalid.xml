@@ -1,7 +1,7 @@
 <note>
-  <from>Jaaptests.com</from>
-  <to>dummytests.com</to>
-  <heading>Reminder</heading>
   <body>Java rocks!</body>
+  <from>Jaaptests.com</from>
+  <heading>Reminder</heading>
+  <to>dummytests.com</to>
 </note>
 

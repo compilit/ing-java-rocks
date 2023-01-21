@@ -19,18 +19,18 @@
 
     <!-- Spring dependencies -->
     <dependency>
-      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-amqp</artifactId>
+      <groupId>org.springframework.boot</groupId>
     </dependency>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
+      <groupId>org.springframework.boot</groupId>
     </dependency>
 
     <!-- third party dependencies -->
     <dependency>
-      <groupId>com.rabbitmq.jms</groupId>
       <artifactId>rabbitmq-jms</artifactId>
+      <groupId>com.rabbitmq.jms</groupId>
       <version>3.1.0</version>
     </dependency>
 

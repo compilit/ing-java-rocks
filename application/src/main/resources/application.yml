@@ -1,4 +1,3 @@
-
 mq:
   name: "java-rocks"
   exchange-name: "amq.topic"

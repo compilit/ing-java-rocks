@@ -4,8 +4,6 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <artifactId>application</artifactId>
-  <version>${revision}</version>
-
   <build>
     <plugins>
       <plugin>
@@ -21,6 +19,7 @@
       </plugin>
     </plugins>
   </build>
+
   <dependencies>
 
     <!-- internal dependencies -->
@@ -33,21 +32,22 @@
       <groupId>nl.ing</groupId>
     </dependency>
     <dependency>
-      <groupId>nl.ing</groupId>
       <artifactId>core</artifactId>
-      <type>test-jar</type>
+      <groupId>nl.ing</groupId>
       <scope>test</scope>
+      <type>test-jar</type>
     </dependency>
 
   </dependencies>
-
   <modelVersion>4.0.0</modelVersion>
-  <packaging>jar</packaging>
 
+  <packaging>jar</packaging>
   <parent>
     <artifactId>ing-java-rocks</artifactId>
     <groupId>nl.ing</groupId>
     <version>${revision}</version>
   </parent>
+
+  <version>${revision}</version>
 
 </project>
