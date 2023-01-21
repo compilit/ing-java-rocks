@@ -8,9 +8,9 @@ spring:
     username: guest
     password: guest
   datasource:
-    url: jdbc:postgresql://localhost:5432/java-rocks
+    url: jdbc:postgresql://localhost:5433/java-rocks
     username: postgres
-    password: DbMaj7#5b9/Bb-POSTGRES
+    password: mysecretpassword
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
