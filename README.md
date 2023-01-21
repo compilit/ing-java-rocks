@@ -3,6 +3,7 @@
 0: in order to run the integration test:
   - start rabbit: docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.11-management
   - start postgres: docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres --p 5432:5432
+    (or define your own local db of course)
 
 1: I do like to use stuff like Lombok, but since I don't want to force the one watching my code to have the processor
 for Lombok enabled, I've chosen for handwritten constructors and getters.
