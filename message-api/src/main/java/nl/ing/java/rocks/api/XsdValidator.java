@@ -2,6 +2,7 @@ package nl.ing.java.rocks.api;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import java.io.ByteArrayInputStream;
 import javax.xml.transform.stream.StreamSource;
 import nl.ing.java.rocks.core.JavaRocksException;
@@ -16,10 +17,10 @@ import org.xml.sax.SAXException;
 class XsdValidator implements Validator<NoteDto> {
 
   private final javax.xml.validation.Validator validator;
-  private final ObjectMapper objectMapper;
+  private final XmlMapper objectMapper;
   private final Logger logger = LoggerFactory.getLogger(getClass());
 
-  XsdValidator(javax.xml.validation.Validator validator, ObjectMapper objectMapper) {this.validator = validator;
+  XsdValidator(javax.xml.validation.Validator validator, XmlMapper objectMapper) {this.validator = validator;
     this.objectMapper = objectMapper;
   }
 

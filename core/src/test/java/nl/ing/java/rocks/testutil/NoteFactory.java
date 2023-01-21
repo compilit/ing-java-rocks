@@ -21,8 +21,15 @@ public final class NoteFactory {
   }
 
   public static NoteDto createValidNoteDto() {
+    return read("valid.xml");
+  }
+  public static NoteDto createInvalidNoteDto() {
+    return read("invalid.xml");
+  }
+
+  private static NoteDto read(String source) {
     try {
-      return new XmlMapper().readValue(Resources.getResourceAsString("input.xml"), NoteDto.class);
+      return new XmlMapper().readValue(Resources.getResourceAsString(source), NoteDto.class);
     } catch (JsonProcessingException e) {
       throw new RuntimeException(e);
     }

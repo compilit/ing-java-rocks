@@ -30,7 +30,7 @@ public class MessageConsumerTest {
 
   public static Stream<Arguments> invalidInput() {
     return Stream.of(
-      Arguments.arguments(NoteFactory.createInvalidNoteDtoString())
+      Arguments.arguments(NoteFactory.createInvalidNoteDto())
     );
   }
 
