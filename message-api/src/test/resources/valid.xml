@@ -1,7 +1,7 @@
 <note>
-  <body>Java rocks!</body>
   <from>Jaap@tests.com</from>
-  <heading>Reminder</heading>
   <to>dummy@tests.com</to>
+  <heading>Reminder</heading>
+  <body>Java rocks!</body>
 </note>
 

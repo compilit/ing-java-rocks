@@ -17,7 +17,7 @@ public final class NoteFactory {
   }
 
   public static String createValidNoteDtoString() {
-    return Resources.getResourceAsString("input.xml");
+    return Resources.getResourceAsString("valid.xml");
   }
 
   public static NoteDto createValidNoteDto() {
