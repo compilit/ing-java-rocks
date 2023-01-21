@@ -22,6 +22,8 @@
     </plugins>
   </build>
   <dependencies>
+
+    <!-- internal dependencies -->
     <dependency>
       <artifactId>message-api</artifactId>
       <groupId>nl.ing</groupId>
@@ -36,6 +38,7 @@
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
+
   </dependencies>
 
   <modelVersion>4.0.0</modelVersion>

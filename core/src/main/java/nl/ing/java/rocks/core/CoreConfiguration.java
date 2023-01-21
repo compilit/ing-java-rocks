@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 class CoreConfiguration {
 
   @Bean
-  XmlMapper objectMapper() {
+  XmlMapper xmlMapper() {
     return new XmlMapper();
   }
 }

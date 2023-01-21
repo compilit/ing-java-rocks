@@ -12,10 +12,9 @@ import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-//import org.springframework.jms.annotation.EnableJms;
+import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.util.ErrorHandler;
 import org.xml.sax.SAXException;
 
@@ -32,13 +31,6 @@ class MessageConsumerConfiguration {
   ConnectionFactory connectionFactory() {
     return new CachingConnectionFactory();
   }
-//  @Bean
-//  public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(ConnectionFactory connectionFactory) {
-//    DefaultJmsListenerContainerFactory factory
-//      = new DefaultJmsListenerContainerFactory();
-//    factory.setConnectionFactory(connectionFactory);
-//    return factory;
-//  }
 
   @Bean
   RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
@@ -46,6 +38,7 @@ class MessageConsumerConfiguration {
     rabbitTemplate.setConnectionFactory(connectionFactory);
     return rabbitTemplate;
   }
+
   @Bean
   ErrorHandler errorHandler() {
     return throwable -> {

@@ -1,4 +1,7 @@
 package nl.ing.java.rocks.core;
+
+import com.fasterxml.jackson.annotation.JsonRootName;
+@JsonRootName("note")
 public class NoteDto {
 
   private String from;

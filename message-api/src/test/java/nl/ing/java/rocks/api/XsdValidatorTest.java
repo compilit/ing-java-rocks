@@ -12,7 +12,6 @@ import javax.xml.validation.Validator;
 import nl.ing.java.rocks.core.NoteDto;
 import nl.ing.java.rocks.testutil.NoteFactory;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -35,19 +34,21 @@ class XsdValidatorTest {
   public static Stream<Arguments> validInput() {
     return Stream.of(
       Arguments.arguments(NoteFactory.createValidNoteDto())
+      //todo: add more test cases
     );
   }
 
   public static Stream<Arguments> invalidInput() {
     return Stream.of(
       Arguments.arguments(NoteFactory.createInvalidNoteDto())
+      //todo: add more test cases
     );
   }
 
   @ParameterizedTest
   @MethodSource("validInput")
   void validate_validInput_shouldAcceptMessage(NoteDto note) throws JsonProcessingException {
-    when(xmlMapper.writeValueAsString(any())).thenReturn(NoteFactory.createValidNoteString());
+    when(xmlMapper.writeValueAsString(any())).thenReturn(NoteFactory.createValidNoteDtoString());
     Assertions.assertThatNoException().isThrownBy(() -> xsdValidator.validate(note));
   }
 

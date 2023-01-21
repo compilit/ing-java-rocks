@@ -16,7 +16,7 @@ public final class NoteFactory {
     return new Note(VALID_EMAIL, VALID_EMAIL, TEST_HEADING, TEST_BODY);
   }
 
-  public static String createValidNoteString() {
+  public static String createValidNoteDtoString() {
     return Resources.getResourceAsString("input.xml");
   }
 

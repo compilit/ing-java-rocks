@@ -4,6 +4,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <artifactId>message-api</artifactId>
   <dependencies>
+
+    <!-- internal dependencies -->
     <dependency>
       <artifactId>core</artifactId>
       <groupId>nl.ing</groupId>
@@ -15,16 +17,7 @@
       <type>test-jar</type>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>org.springframework</groupId>-->
-<!--      <artifactId>spring-jms</artifactId>-->
-<!--      <version>6.0.4</version>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>jakarta.jms</groupId>-->
-<!--      <artifactId>jakarta.jms-api</artifactId>-->
-<!--      <version>3.1.0</version>-->
-<!--    </dependency>-->
+    <!-- Spring dependencies -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-amqp</artifactId>
@@ -33,11 +26,14 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
+
+    <!-- third party dependencies -->
     <dependency>
       <groupId>com.rabbitmq.jms</groupId>
       <artifactId>rabbitmq-jms</artifactId>
       <version>3.1.0</version>
     </dependency>
+
   </dependencies>
 
   <modelVersion>4.0.0</modelVersion>
