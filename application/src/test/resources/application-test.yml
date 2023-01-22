@@ -1,0 +1,17 @@
+mq:
+  name: "java-rocks"
+  exchange-name: "amq.topic"
+  note-xsd-path: "note-format.xsd"
+spring:
+  rabbitmq:
+    username: guest
+    password: guest
+  datasource:
+    url: jdbc:postgresql://localhost:5555/java-rocks
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.PostgreSQLDialect

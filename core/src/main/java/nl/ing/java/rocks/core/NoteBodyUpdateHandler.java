@@ -3,10 +3,13 @@ package nl.ing.java.rocks.core;
 import nl.ing.java.rocks.core.api.Handler;
 import nl.ing.java.rocks.core.api.PersistencePort;
 import nl.ing.java.rocks.entities.Note;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageHandler;
+import org.springframework.messaging.MessagingException;
 import org.springframework.stereotype.Service;
 
 @Service
-class NoteBodyUpdateHandler implements Handler<NoteDto> {
+class NoteBodyUpdateHandler implements Handler<NoteDto>, MessageHandler {
 
   private final PersistencePort<Note> persistencePort;
 
@@ -25,6 +28,11 @@ class NoteBodyUpdateHandler implements Handler<NoteDto> {
     var upperCasedBody = updatedBody.toUpperCase();
     note.updateBody(upperCasedBody);
     persistencePort.persist(note);
+  }
+
+  @Override
+  public void handleMessage(Message<?> message) throws MessagingException {
+
   }
 
   private static Note createNote(NoteDto input) {

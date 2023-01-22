@@ -1,8 +1,10 @@
 package nl.ing.java.rocks.application;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
+import nl.ing.java.rocks.api.InvalidNoteFormatException;
 import nl.ing.java.rocks.core.NoteDto;
 import nl.ing.java.rocks.core.api.JmsConsumer;
 import nl.ing.java.rocks.core.api.JmsPublisher;
@@ -17,28 +19,37 @@ import org.springframework.test.context.ActiveProfiles;
 
 @ActiveProfiles("test")
 @SpringBootTest(classes = JavaRocksApplication.class)
-public class JavaRocksIntegrationTest extends IntegrationTest {
+public class JavaRocksComponentTest extends IntegrationTest {
 
-  //A very, very minimal integration test, requires mq instance on local machine
+  //Using the in-memory database and no actual MQ
   @Autowired
   JmsConsumer<GenericMessage<String>> noteDtoJmsConsumer;
-  @Autowired
-  JmsPublisher<NoteDto> noteDtoJmsPublisher;
   @Autowired
   RetrievalPort<List<Note>, String> noteRetrievalPort;
 
   @Test
-  void consume_validNoteDto_shouldAddEntryInDatabaseWithCorrectBody() throws InterruptedException {
+  void consume_validNoteDto_shouldAddEntryInDatabaseWithCorrectBody() {
     var results = noteRetrievalPort.retrieveBy("Reminder");
     assertThat(results).hasSize(0);
-    var validNoteDto = NoteFactory.createValidNoteDto();
+    var validNoteDto = NoteFactory.createValidNoteDtoString();
 
-    noteDtoJmsPublisher.publish(validNoteDto);
+    noteDtoJmsConsumer.consume(new GenericMessage<>(validNoteDto));
 
-    Thread.sleep(1000); //due to the async and multi-threaded nature of this test, I made this quick and dirty fix...
     results = noteRetrievalPort.retrieveBy("Reminder");
 
     assertThat(results).hasSize(1);
     assertThat(results.get(0).getBody()).isEqualTo("JAVA 11 ROCKS!");
+  }
+
+  @Test
+  void consume_invalidNoteDto_shouldThrowException() {
+    var results = noteRetrievalPort.retrieveBy("Reminder");
+    assertThat(results).hasSize(0);
+    var validNoteDto = NoteFactory.createInvalidNoteDtoString();
+
+    assertThatThrownBy(() -> noteDtoJmsConsumer.consume(new GenericMessage<>(validNoteDto)))
+      .isInstanceOf(InvalidNoteFormatException.class);
+    results = noteRetrievalPort.retrieveBy("Reminder");
+    assertThat(results).hasSize(0);
   }
 }
