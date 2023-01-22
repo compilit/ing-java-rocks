@@ -1,6 +1,5 @@
 # implementation choices and thoughts
 
-
 0: in order to run the JavaRocksIntegrationTest:
 
 - start rabbit: docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.11-management
@@ -14,6 +13,6 @@ for Lombok enabled, I've chosen for handwritten constructors and getters.
 3: I prefer to use immutable objects to deserialize into, but I couldn't get that to work with the XmlMapper.
 I usually use Java 17 records for this. Setters are something I hate to write...
 
-4: due to lack of time I did not create unit tests purely for the sake of code coverage. Only "business-critcal" is
+4: I did not create unit tests purely for the sake of code coverage. Only "business-critcal" is
 covered by tests
 

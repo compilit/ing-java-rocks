@@ -17,7 +17,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ErrorHandler;
 import org.xml.sax.SAXException;
 
-//@EnableJms
 @EnableRabbit
 @Configuration
 class MessageConsumerConfiguration {
@@ -41,6 +40,7 @@ class MessageConsumerConfiguration {
   @Bean
   ErrorHandler errorHandler() {
     return throwable -> {
+      //todo: send to dead-letter adter x retries
       var logger = LoggerFactory.getLogger(MessageConsumer.class);
       logger.error("Error while processing message: {}", throwable.getMessage());
     };

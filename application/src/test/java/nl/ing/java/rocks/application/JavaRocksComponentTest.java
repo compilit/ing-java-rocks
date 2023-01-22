@@ -5,9 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import nl.ing.java.rocks.api.InvalidNoteFormatException;
-import nl.ing.java.rocks.core.NoteDto;
 import nl.ing.java.rocks.core.api.JmsConsumer;
-import nl.ing.java.rocks.core.api.JmsPublisher;
 import nl.ing.java.rocks.core.api.RetrievalPort;
 import nl.ing.java.rocks.entities.Note;
 import nl.ing.java.rocks.testutil.NoteFactory;

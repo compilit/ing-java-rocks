@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <note>
-  <from>Jaap@tests.com</from>
-  <to>dummy@tests.com</to>
-  <heading>Reminder</heading>
   <body>Java rocks!</body>
+  <from>Jaap@tests.com</from>
+  <heading>Reminder</heading>
+  <to>dummy@tests.com</to>
 </note>
 

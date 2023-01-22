@@ -7,6 +7,8 @@ import nl.ing.java.rocks.core.NoteDto;
 import nl.ing.java.rocks.core.api.Handler;
 import nl.ing.java.rocks.core.api.JmsConsumer;
 import nl.ing.java.rocks.core.api.Validator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Component;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 class MessageConsumer implements JmsConsumer<GenericMessage<String>> {
 
+  private final Logger logger = LoggerFactory.getLogger(getClass());
   private final Handler<NoteDto> noteHandler;
   private final Validator<NoteDto> noteValidator;
   private final XmlMapper xmlMapper;
@@ -28,6 +31,7 @@ class MessageConsumer implements JmsConsumer<GenericMessage<String>> {
 
   @RabbitListener(queues = {"${mq.name}"})
   public void consume(GenericMessage<String> message) {
+    logger.info("Received new message {}", message);
     try {
       var noteDto = xmlMapper.readValue(message.getPayload(), NoteDto.class);
       noteValidator.validate(noteDto);

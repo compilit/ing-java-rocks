@@ -8,18 +8,8 @@
 
     <!-- Spring dependencies-->
     <dependency>
-      <artifactId>spring-integration-core</artifactId>
-      <groupId>org.springframework.integration</groupId>
-    </dependency>
-    <dependency>
       <artifactId>spring-boot-starter-test</artifactId>
       <groupId>org.springframework.boot</groupId>
-    </dependency>
-
-    <!-- third party dependencies-->
-    <dependency>
-      <artifactId>jackson-dataformat-xml</artifactId>
-      <groupId>com.fasterxml.jackson.dataformat</groupId>
     </dependency>
 
   </dependencies>
