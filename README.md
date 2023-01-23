@@ -3,6 +3,8 @@
 0: in order to run the JavaRocksIntegrationTest:
 
 - start rabbit: docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.11-management
+- login to localhost:15672 using credentials: guest/guest
+- create a queue named "java-rocks"
 
 1: I've never heard of Spring Integration DSL, so due to lack of time, I won't use it. I will definitely look into it,
 however.
